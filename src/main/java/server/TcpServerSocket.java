@@ -42,10 +42,10 @@ public class TcpServerSocket {
                 System.out.println("Server received: " + line);
                 toClient.println("Thank you for connecting to " + server.getLocalSocketAddress() + "\nGoodbye!");
 
-                BufferedImage image = ImageIO.read(new File("./resource/ex.jpeg"));
+                BufferedImage image = ImageIO.read(new File("./resource/minion.jpg"));
 
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                ImageIO.write(image, "jpeg", byteArrayOutputStream);
+                ImageIO.write(image, "jpg", byteArrayOutputStream);
 
                 byte[] size = ByteBuffer.allocate(4).putInt(byteArrayOutputStream.size()).array();
                 outputStream.write(size);

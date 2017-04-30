@@ -1,5 +1,6 @@
 package client;
 
+import org.apache.commons.io.FileUtils;
 import util.PropertyReader;
 
 import javax.imageio.ImageIO;
@@ -49,8 +50,13 @@ public class TcpClientSocket {
 
             BufferedImage image = ImageIO.read(new ByteArrayInputStream(imageAr));
 
+            File fileDirectory = new File("./output");
+            if (!fileDirectory.exists()) {
+                FileUtils.forceMkdir(fileDirectory);
+            }
+
             System.out.println("Received " + image.getHeight() + "x" + image.getWidth() + ": " + System.currentTimeMillis());
-            ImageIO.write(image, "jpg", new File("./resource/exWrite.jpg"));
+            ImageIO.write(image, "jpg", new File("./output/outputPic.jpg"));
 
 
             toServer.close();
